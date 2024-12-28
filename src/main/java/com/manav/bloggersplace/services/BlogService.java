@@ -18,4 +18,12 @@ public class BlogService {
     public Blog getBlog(Integer id) {
         return blogRepo.findById(id).get();
     }
+
+    public Blog updateBlog(Blog updatedBlog) {
+        Blog blog = blogRepo.findById(updatedBlog.getId()).get();
+        blog.setDescription(updatedBlog.getDescription());
+        blog.setTitle(updatedBlog.getTitle());
+        blogRepo.save(blog);
+        return blog;
+    }
 }

@@ -12,19 +12,19 @@ public class BlogController {
     @Autowired
     BlogService blogService;
 
-    @GetMapping
-    public String healthCheck() {
-        return "The API is up and running";
-    }
-
     @GetMapping("/{id}")
-    public Blog getBlog(@PathVariable Integer id) {
-        return blogService.getBlog(id);
+    public Blog getBlog(@PathVariable Integer blogId) {
+        return blogService.getBlog(blogId);
     }
 
     @PostMapping("/add")
     public String addBlog(@RequestBody Blog blog) {
         return blogService.addBlog(blog);
+    }
+
+    @PutMapping("/add")
+    public Blog updateBlog(@RequestBody Blog updatedBlog) {
+        return blogService.updateBlog(updatedBlog);
     }
 
 }
